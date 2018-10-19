@@ -1,10 +1,8 @@
-package com.photo_editor_android_ui;
+package com.photoeditorsdkui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
-import com.photoeditorsdkui.PhotoEditorActivity;
 
 public class MainActivity extends MediaActivity {
 
@@ -14,18 +12,18 @@ public class MainActivity extends MediaActivity {
         setContentView(R.layout.activity_main);
     }
 
+    public void openUserGallery(View view) {
+        openGallery();
+    }
+
+    public void openUserCamera(View view) {
+        startCameraActivity();
+    }
+
     @Override
     protected void onPhotoTaken() {
         Intent intent = new Intent(MainActivity.this, PhotoEditorActivity.class);
         intent.putExtra("selectedImagePath", selectedImagePath);
         startActivity(intent);
-    }
-
-    public void openEditor(View view) {
-        openGallery();
-    }
-
-    public void openCamera(View view) {
-        startCameraActivity();
     }
 }
